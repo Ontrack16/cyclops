@@ -8,7 +8,7 @@ In addition, the TUI can also store up to 10 configurations to easily switch bet
 
 # Prerequists
 - webcam ;-)
-- `v4l2-tl`
+- `v4l2-ctl`
 - optional: `ffplay` for preview
 
 # Setup
