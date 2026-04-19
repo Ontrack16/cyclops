@@ -6,7 +6,7 @@ Unfortunately, there seems to be no implementation that supports convenient WASD
 This script provides a simple TUI (text user interface) for that purpose.
 In addition, the TUI can also store up to 10 configurations to easily switch between, e.g. focusing on (1) the speaker of a presentation, (2) the blackboard, (3) an experimental setup, (4) the presentation slides, ...
 
-Also see the [Cyclops companion](https://github.com/jan-tudos/cyclops-ompanion).
+Also see the [Cyclops companion](https://github.com/jan-tudos/cyclops-companion).
 
 # Prerequists
 - webcam ;-)
