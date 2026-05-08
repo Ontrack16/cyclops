@@ -162,14 +162,47 @@ function show_tui()
  	printf '\e[5;93m' # coloured, blinking test
 	write_at 1 1 "${STATUS}"
 	printf '\e[0m' # reset text to normal
-	write_at 5 4 "Pan:  $(( -VAL[pan]))"
-	write_at 5 5 "Tilt: ${VAL[tilt]}"
-	write_at 5 6 "Zoom: ${VAL[zoom]}"
-	write_at 1 9 "Saved: ${!SAVED[*]}"
-	write_at 1 13 'Use w, a, s, d to pan and tilt the camera. e and c to zoom in and out. Hold Shift for larger steps.
-Shift + <number> to store a state. <number> to recall a stored state.
-r to reset to standard "forward" direction. p for a preview using ffplay.
-ESC or Ctrl + c to exit.'
+	write_at 20 2 "Device : $DEV"
+	write_at 5 2 "  w"
+	write_at 5 3 "  |"
+	write_at 5 4 "d---a"
+	write_at 5 5 "  |"
+	write_at 5 6 "  s"
+
+	((VAL[tilt] > 0)) && {
+	write_at 20 3 "Tilt: ${VAL[tilt]}"
+	}
+	write_at 20 4 "Pan:  $((VAL[pan]))"
+	((VAL[tilt] == 0)) && {
+	write_at 25 4 "Tilt: ${VAL[tilt]}"
+	}
+	((VAL[tilt] < 0)) && {
+	write_at 20 5 "Tilt: ${VAL[tilt]}"
+	}
+    write_at 1 8 "c<---------->e"
+	write_at 20 8 "Zoom: ${VAL[zoom]}"
+	write_at 1 9  "        -----"
+	write_at 1 10 "  ----     /"
+	write_at 1 11 "z   /     /"
+	write_at 1 12 "   /     /"
+	write_at 1 13 "  ----  -----"
+
+	write_at 1 15 "Saved: ${!SAVED[*]}"
+	write_at 1 17 "-------------------------------------------"
+	write_at 1 18 "| d , a           = pan left/right        |"
+	write_at 1 19 "| w , s           = tilt up / down        | +<SHIFT> for larger steps"
+	write_at 1 20 "| c , e           = zoom in / out         |"
+	write_at 1 21 "|---------------------------------------------------------|"
+	write_at 1 22 "|Shift + <number> = store a state                         |"
+	write_at 1 23 "|<number>         = recall a stored state                 |"
+	write_at 1 24 "|---------------------------------------------------------|"
+	write_at 1 25 "|r                = reset to standard 'forward' direction |"
+	write_at 1 26 "|---------------------------------------------------------|"
+	write_at 1 27 "|p                = preview using ffplay                  |"
+	write_at 1 28 "|---------------------------------------------------------|"
+	write_at 1 29 "|---------------------------------------------------------|"
+	write_at 1 30 "|ESC , Ctrl + c   = exit                                  |"
+	write_at 1 31 "|---------------------------------------------------------|"
 }
 
 function save_state() {
